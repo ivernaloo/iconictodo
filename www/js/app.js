@@ -22,7 +22,7 @@ angular.module('ionictodo', ['ionic','ionictodo.controllers','ionictodo.services
     }
     $state.go('todos');
   });
-}).config(function($stateProvider){
+}).config(function($stateProvider){  // state provider a mechanims for the modular
   $stateProvider.state('todos',{
     url:'/todos',
     controller:'TodoListController',
