@@ -32,7 +32,7 @@ angular.module('ionictodo.services',[]).factory('Todo', ['$http','LEANCLOUD_CRED
       },
       edit: function(id, data){
         return $http.put
-        ('https://api.leancloud.cn/1.1/classes/ionictodo'+id, data, {
+        ('https://api.leancloud.cn/1.1/classes/ionictodo/'+id, data, {
           headers: {
             'x-avoscloud-application-id': LEANCLOUD_CREDENTIALS.APP_ID,
             'x-avoscloud-application-key': LEANCLOUD_CREDENTIALS.REST_API_KEY,

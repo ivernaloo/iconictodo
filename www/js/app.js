@@ -4,8 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('ionictodo', ['ionic','ionictodo.controllers','ionictodo.services'])
-
-.run(function($ionicPlatform,$state) {
+.run(function($ionicPlatform,$rootScope,$state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,20 +19,36 @@ angular.module('ionictodo', ['ionic','ionictodo.controllers','ionictodo.services
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    $state.go('todos');
+    $state.go('todo');
+
+    // update main view
+    // $rootScope.updateMV = function() {
+    //   console.log("current name", $state.current.name);
+    //   if($state.current.name === 'todo') {
+    //     $state.go('todo', {}, { reload: true });
+    //   }
+    // }
+
+    // -- just to see our about => about state 'change'
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      // console.log('toState:   ' + toState.name );
+      // console.log('fromState: ' + (fromState.name || 'Just got there! click again!'));
+      // console.log("chnage")
+    })
   });
 }).config(function($stateProvider){  // state provider a mechanims for the modular
-  $stateProvider.state('todos',{
-    url:'/todos',
+  $stateProvider.state('todo',{
+    url:'/todo',
+    cache: false,
     controller:'TodoListController',
-    templateUrl:'views/todos.html'
+    templateUrl:'views/todo.html'
   }).state('createTodo',{
     url:'/todo/new',
     controller:'TodoCreationController',
     templateUrl:'views/create-todo.html'
   }).state('editTodo',{
     url:'/todo/edit/:id/:content',
-    controller: 'TodoEditController',
-    templateUrl: 'views/edit-todo.html'
+    controller:'TodoEditController',
+    templateUrl:'views/edit-todo.html'
   })
 })

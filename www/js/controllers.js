@@ -14,7 +14,7 @@ angular.module('ionictodo.controllers',[]).controller('TodoListController',['$sc
   $scope.create=function(){ // 重载了create方法
     Todo.create({content:$scope.todo.content}).success(
       function(data){
-        $state.go('todos');
+        $state.go('todo'); //
       }
     );
   }
@@ -23,9 +23,10 @@ angular.module('ionictodo.controllers',[]).controller('TodoListController',['$sc
   $scope.todo={id:$stateParams.id, content:$stateParams.content};
 
   $scope.edit=function(){
-    Todo.edit($scope.todo.id,
-      {content:$scope.todo.content}).success(function(data){
-      $state.go('todos');
-    })
+    Todo.edit($scope.todo.id,{content:$scope.todo.content}).success(
+      function(data){
+        $state.go('todo');
+      }
+    )
   }
 }]); // declare the controller as a chain, interesting

@@ -5,9 +5,9 @@
     <button class="button" ui-sref="createTodo">New</button>
   </div>
 </ion-header-bar>
-<ion-content>
-  <ion-list show-delete="data.showDelete">
-    <ion-item ng-repeat="item in items | orderBy: '-createAt'"
+<ion-content cache-view="false">
+  <ion-list show-delete="data.showDelete" >
+    <ion-item ng-repeat="item in items | orderBy: '-createdAt'"
               item="item"
               href="#/todo/edit/{{item.objectId}}/{{item.content}}">
               {{item.content}}
